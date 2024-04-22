@@ -98,8 +98,7 @@
 
 								
 							  </script>
-
-
+							  
 							
 							<p class="major">A (modular, highly tweakable) responsive one-page template designed by <a href="https://html5up.net">HTML5 UP</a> and released for free under the <a href="https://html5up.net/license">Creative Commons</a>.</p>
 							<ul class="actions stacked">
@@ -431,6 +430,69 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+
+			<script>
+				function varsumativa(){
+
+				var total=0
+				var textej="";
+				total+=total+5;
+				total+=total+8;
+				total+=total+9;
+
+				textej+="<h1> ";
+				textej+="estoy aca ";
+				textej+="</h1>";
+
+				console.log(textej);
+				}
+
+				varsumativa();
+
+				function createCards() {
+				const cardContainer = document.getElementById('card-container');
+				const images = ["images/pic01.jpg", "images/pic02.jpg", "images/pic03.jpg"];
+
+				for (let i = 0; i < 3; i++) { // Crear tres tarjetas
+					const card = document.createElement('div');
+					card.classList.add('card');
+
+					const cardImgContainer = document.createElement('div');
+					cardImgContainer.classList.add('card-img-container');
+
+					for (let j = 0; j < images.length; j++) { // Añadir tres imágenes a cada tarjeta
+						const img = document.createElement('img');
+						img.src = images[j];
+						img.alt = `Imagen ${j+1}`;
+						img.classList.add('card-img');
+						cardImgContainer.appendChild(img);
+					}
+
+					const cardBody = document.createElement('div');
+					cardBody.classList.add('card-body');
+
+					const cardTitle = document.createElement('h3');
+					cardTitle.textContent = `Título de la Card ${i+1}`;
+
+					const cardText = document.createElement('p');
+					cardText.textContent = `Descripción breve de la card ${i+1}.`;
+
+					cardBody.appendChild(cardTitle);
+					cardBody.appendChild(cardText);
+
+					card.appendChild(cardImgContainer);
+					card.appendChild(cardBody);
+
+					cardContainer.appendChild(card);
+        }
+    }
+
+    // Llamar a la función para crear las tarjetas cuando se cargue el contenido
+    createCards();
+			</script>
+
+			
 
 	</body>
 </html>
