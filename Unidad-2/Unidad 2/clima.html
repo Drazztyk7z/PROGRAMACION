@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="clima"></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script>
+        const settings = {
+	async: true,
+	crossDomain: true,
+	url: 'https://yahoo-weather5.p.rapidapi.com/weather?location=punta%20arenas&format=json&u=c',
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '6610deeff9mshe390d415628123ep1c9189jsn864b3f9eb974',
+		'X-RapidAPI-Host': 'yahoo-weather5.p.rapidapi.com'
+	}
+};
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+    // Accede a la información del clima
+    const forecast = response.forecasts;
+
+    // Itera sobre cada objeto en el arreglo de pronósticos
+    forecast.forEach(function(item) {
+        // Accede al día y a la temperatura de cada pronóstico
+        const day = item.day;
+        const temperature = item.high;
+        const text = item.text
+        const tempMin = item.low;
+        
+        // Agrega el día y la temperatura al elemento con el id "clima"
+        $("#clima").append("<h1>Día: " + day + " - Temperatura Maxima: " + temperature + " - Temperatura Minima: " + tempMin + " - Estado: " + text + "</h1>");
+    });
+});
+    </script>
+</body>
+</html>
